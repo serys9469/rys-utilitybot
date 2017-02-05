@@ -90,6 +90,11 @@ public class SearchManager {
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (DatabaseRecord previousDatabaseRecord : databaseManager.queryOfPreviousById(databaseRecord.getId(), groupId, 2)) {
+                        stringBuilder.append( previousDatabaseRecord.getDate() + "\n");
+                        break;
+                    }
+                    
+                    for (DatabaseRecord previousDatabaseRecord : databaseManager.queryOfPreviousById(databaseRecord.getId(), groupId, 2)) {
                         stringBuilder.append( previousDatabaseRecord.getDate() + " ~\n---------------------\n" + previousDatabaseRecord.getText() + "\n" + "---------------------\n");
                     }
                     stringBuilder.append( databaseRecord.getText() + "\n" + "---------------------\n");
