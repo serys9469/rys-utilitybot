@@ -90,16 +90,16 @@ public class SearchManager {
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (DatabaseRecord previousDatabaseRecord : databaseManager.queryOfPreviousById(databaseRecord.getId(), groupId, 2)) {
-                        stringBuilder.append( previousDatabaseRecord.getDate() + " ~\n---------------------\n" );
+                        stringBuilder.append( previousDatabaseRecord.getDate() + " ~\ns--------------------\n" );
                         break;
                     }
                     
                     for (DatabaseRecord previousDatabaseRecord : databaseManager.queryOfPreviousById(databaseRecord.getId(), groupId, 2)) {
-                        stringBuilder.append( previousDatabaseRecord.getText() + "\n---------------------\n");
+                        stringBuilder.append( previousDatabaseRecord.getText() + "\nm--------------------\n");
                     }
-                    stringBuilder.append( databaseRecord.getText() + "\n---------------------\n");
+                    stringBuilder.append( databaseRecord.getText() + "\nl--------------------\n");
                     for (DatabaseRecord afterDatabaseRecord : databaseManager.queryOfAfterById(databaseRecord.getId(), groupId, 2)) {
-                        stringBuilder.append( afterDatabaseRecord.getText() + "\ns--------------------\n");
+                        stringBuilder.append( afterDatabaseRecord.getText() + "\n---------------------\n");
                     }
 
                     messages.add(new TextMessage(stringBuilder.toString()));
