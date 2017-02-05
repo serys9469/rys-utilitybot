@@ -97,9 +97,9 @@ public class SearchManager {
                     for (DatabaseRecord previousDatabaseRecord : databaseManager.queryOfPreviousById(databaseRecord.getId(), groupId, 2)) {
                         stringBuilder.append( previousDatabaseRecord.getText() + "\n---------------------\n");
                     }
-                    stringBuilder.append( databaseRecord.getText() + "\n" + "---------------------\n");
+                    stringBuilder.append( databaseRecord.getText() + "\n---------------------\n");
                     for (DatabaseRecord afterDatabaseRecord : databaseManager.queryOfAfterById(databaseRecord.getId(), groupId, 2)) {
-                        stringBuilder.append( afterDatabaseRecord.getText() + "---------------------\n");
+                        stringBuilder.append( afterDatabaseRecord.getText() + "\ns--------------------\n");
                     }
 
                     messages.add(new TextMessage(stringBuilder.toString()));
