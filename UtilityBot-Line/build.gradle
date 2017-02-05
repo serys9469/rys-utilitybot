@@ -1,0 +1,80 @@
+group 'com.github.kiyohitonara'
+version '0.0.0'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.0.BUILD-SNAPSHOT"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'digest-bot'
+    version = '0.0.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+//Is this necessary?
+dependencyManagement {
+    imports {
+        mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.75'
+    }
+}
+
+dependencies {
+    compile 'com.amazonaws:aws-java-sdk:1.11.75'
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile 'com.linecorp.bot:line-bot-spring-boot:1.5.0'
+
+    compile 'org.jsoup:jsoup:1.10.2'
+
+    compile 'com.squareup.moshi:moshi:1.3.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-moshi:2.1.0'
+
+    //naraDB
+    compile 'postgresql:postgresql:9.1-901-1.jdbc4'
+
+    //eikoDB
+    compile("org.springframework:spring-jdbc")
+    runtime('org.postgresql:postgresql')
+    
+    //kentDB
+    runtime 'org.postgresql:postgresql:9.4-1201-jdbc41'
+
+    compileOnly 'org.projectlombok:lombok:1.16.10'
+
+    compile 'org.jsoup:jsoup:1.10.2'
+    
+
+
+    compile group: 'sax', name: 'sax', version: '2.0.1'
+    compile group: 'org.w3c', name: 'dom', version: '2.3.0-jaxb-1.0.6'
+    compile group: 'javax.xml.parsers', name: 'jaxp-api', version: '1.4.5'
+
+    compile group: 'rome', name: 'rome', version: '1.0'
+}
