@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2017 Kiyohito Nara
  *
@@ -89,11 +90,11 @@ public class SearchManager {
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (DatabaseRecord previousDatabaseRecord : databaseManager.queryOfPreviousById(databaseRecord.getId(), groupId, 2)) {
-                        stringBuilder.append("「" + previousDatabaseRecord.getText() + "」\n");
+                        stringBuilder.append( previousDatabaseRecord.getText() + "\n" + "ーーーーーーーーーー\n");
                     }
-                    stringBuilder.append("「" + databaseRecord.getText() + "」\n");
+                    stringBuilder.append( databaseRecord.getText() + "\n" + "ーーーーーーーーーー\n");
                     for (DatabaseRecord afterDatabaseRecord : databaseManager.queryOfAfterById(databaseRecord.getId(), groupId, 2)) {
-                        stringBuilder.append("「" + afterDatabaseRecord.getText() + "」\n");
+                        stringBuilder.append( afterDatabaseRecord.getText() + "\n" + "ーーーーーーーーーー\n");
                     }
 
                     messages.add(new TextMessage(stringBuilder.toString()));
